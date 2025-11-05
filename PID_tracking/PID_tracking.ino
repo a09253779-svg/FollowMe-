@@ -85,7 +85,7 @@ void loop(){
 
 
   if(abs(error)<barrier){
-    integral*=0.9;
+    //integral*=0.9;
   } 
   else{
     unsigned long now=millis();
