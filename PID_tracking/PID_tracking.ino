@@ -30,8 +30,10 @@ void setup(){
   myservo.attach(servoPin);
   myservo.write(servoPos);
 
-  pinMode(trigL, OUTPUT);pinMode(echoL, INPUT);
-  pinMode(trigR, OUTPUT);pinMode(echoR, INPUT);
+  pinMode(trigL, OUTPUT);
+  pinMode(echoL, INPUT);
+  pinMode(trigR, OUTPUT);
+  pinMode(echoR, INPUT);
 
   for(int i=0;i<10;i++) 
     bufL[i]=bufR[i]=50.0; 
@@ -79,7 +81,7 @@ void loop(){
 
   float dL=smooth(bufL,idxL,rawL,smoothingN);
   float dR=smooth(bufR,idxR,rawR,smoothingN);
-  float error = dL - dR;
+  float error=dL-dR;
 
 
   if(abs(error)<barrier){
