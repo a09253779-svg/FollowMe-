@@ -54,9 +54,9 @@ float readDistance(int trigPin,int echoPin){
   return distanceCm;
 }
 
-float smooth(float *buf,int &idx,float val,int N){
-  buf[idx]=val;
-  idx=(idx+1)%N;
+float smooth(float *buf,int *idx,float val,int N){
+  buf[*idx]=val;
+  idx=(*idx+1)%N;
   float s=0;
   int count=0;
   for(int i=0;i<N;i++) {
@@ -79,8 +79,8 @@ void loop(){
   if(rawR<0) 
     rawR=bufR[(idxR+(smoothingN-1))%smoothingN];
 
-  float dL=smooth(bufL,idxL,rawL,smoothingN);
-  float dR=smooth(bufR,idxR,rawR,smoothingN);
+  float dL=smooth(bufL,&idxL,rawL,smoothingN);
+  float dR=smooth(bufR,&idxR,rawR,smoothingN);
   float error=dL-dR;
 
 
