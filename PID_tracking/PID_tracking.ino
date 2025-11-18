@@ -75,9 +75,9 @@ void loop(){
   delay(10);
 
   if(rawL<0) 
-    rawL=bufL[(idxL+(smoothingN-1))%smoothingN];
+    rawL=bufL[(idxL-1))%smoothingN];
   if(rawR<0) 
-    rawR=bufR[(idxR+(smoothingN-1))%smoothingN];
+    rawR=bufR[(idxR-1))%smoothingN];
 
   float dL=smooth(bufL,&idxL,rawL,smoothingN);
   float dR=smooth(bufR,&idxR,rawR,smoothingN);
